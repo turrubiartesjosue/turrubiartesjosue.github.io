@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Videos y Fotos - Mundial 2026</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+
+<header>
+    <h1 class="titulo-secundario">Galería Mundial 2026</h1>
+    <p>Mejores momentos del fútbol</p>
+</header>
+
+<nav class="menu">
+    <ul>
+        <li><a href="indexhtml">Inicio</a></li>
+        <li><a href="Historia.html">Historia</a></li>
+        <li><a href="estadistica.html">Estadísticas</a></li>
+        <li><a href="trivias.html">Trivia</a></li>
+        <li><a href="ra.html">Realidad Aumentada</a></li>
+        <li><a href="videos.html">Videos y Fotos</a></li>
+    </ul>
+</nav>
+
+<section class="contenido">
+
+    <!-- FOTOS -->
+    <h2>Fotos</h2>
+    <div id="galeriaFotos" class="galeria"></div>
+
+    <!-- VIDEOS -->
+    <h2>Videos</h2>
+    <div id="galeriaVideos" class="galeria"></div>
+
+</section>
+
+<footer>
+    <p>© 2026 Aplicación Mundial</p>
+</footer>
+
+<script>
+
+// IMÁGENES Y VIDEOS
+let galeria = [
+    { tipo: "imagen", src: "recursos/descarga.jpg" },
+    { tipo: "imagen", src: "recursos/descarga (1).jpg" },
+    { tipo: "imagen", src: "recursos/descarga (2).jpg" },
+    { tipo: "imagen", src: "recursos/descarga (3).jpg" },
+
+    { tipo: "video", src: "videos/Messi.mp4" },
+    { tipo: "video", src: "videos/el gol.mp4" },
+    { tipo: "video", src: "videos/Son los 20 peores segundos de la historia del fútbol.mp4" }
+];
+
+// 🔹 MOSTRAR GALERÍA
+function mostrarGaleria() {
+    const contenedorFotos = document.getElementById("galeriaFotos");
+    const contenedorVideos = document.getElementById("galeriaVideos");
+
+    contenedorFotos.innerHTML = "";
+    contenedorVideos.innerHTML = "";
+
+    galeria.forEach((item, index) => {
+
+        if (item.tipo === "imagen") {
+            contenedorFotos.innerHTML += `
+                <div class="card">
+                    <img src="${item.src}">
+                </div>
+            `;
+        } 
+        
+        if (item.tipo === "video") {
+            contenedorVideos.innerHTML += `
+                <div class="card">
+                    
+                    <video id="video-${index}" controls class="video-item">
+                        <source src="${item.src}">
+                    </video>
+
+                    <div class="filtros-video">
+                        <button onclick="aplicarNormal(${index})">Normal</button>
+                        <button onclick="aplicarDesenfoque(${index})">Desenfoque</button>
+                        <button onclick="aplicarTermica(${index})">Cámara Térmica</button>
+                        <button onclick="aplicarPersonalizado(${index})">Filtro contraste</button>
+                    </div>
+
+                </div>
+            `;
+        }
+
+    });
+}
+
+mostrarGaleria();
+
+// 🔹 FILTROS
+function aplicarNormal(index) {
+    const video = document.getElementById(`video-${index}`);
+    video.style.filter = "none";
+}
+
+function aplicarDesenfoque(index) {
+    const video = document.getElementById(`video-${index}`);
+    video.style.filter = "blur(5px)";
+}
+
+function aplicarTermica(index) {
+    const video = document.getElementById(`video-${index}`);
+    video.style.filter = "hue-rotate(200deg) saturate(300%) contrast(200%)";
+}
+
+function aplicarPersonalizado(index) {
+    const video = document.getElementById(`video-${index}`);
+    video.style.filter = "brightness(120%) contrast(130%)";
+}
+
+</script>
+
+</body>
+</html>

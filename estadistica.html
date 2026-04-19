@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estadísticas - Mundial 2026</title>
+    <link rel="stylesheet" href="estilo.css">
+        <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header>
+    <h1 class="titulo-secundario">Simulación Mundial 2026</h1>
+    <p>Torneo de simulacion con selecciones participantes</p>
+</header>
+
+    <nav class="menu">
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="Historia.html">Historia</a></li>
+            <li><a href="estadistica.html">Estadísticas</a></li>
+            <li><a href="trivias.html">Trivia</a></li>
+            <li><a href="ra.html">Realidad Aumentada</a></li>
+            <li><a href="videos.html">Videos y Fotos</a></li>
+        </ul>
+    </nav>
+
+<section class="contenido">
+
+    <h2>Tabla del Grupo A (Simulación)</h2>
+
+    <table id="tabla">
+        <thead>
+            <tr>
+                <th>Equipo</th>
+                <th>Partidos Jugados</th>
+                <th>Partidos Ganados</th>
+                <th>Partidos Empatados</th>
+                <th>Partidos Perdidos</th>
+                <th>Puntos</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <br>
+    <button onclick="simularTorneo()">Simular Torneo</button>
+    <h3 id="ganador"></h3>
+
+
+</section>
+
+<footer>
+    <p>© 2026 Aplicación Mundial</p>
+</footer>
+
+<script>
+
+const equipos = [
+    "México",
+    "Estados Unidos",
+    "Brasil",
+    "Canadá"
+];
+
+function simularTorneo() {
+    const tbody = document.querySelector("#tabla tbody");
+    const ganadorTexto = document.getElementById("ganador");
+    tbody.innerHTML = "";
+    ganadorTexto.innerHTML = "";
+
+    let tabla = [];
+
+    equipos.forEach(equipo => {
+        let pg = Math.floor(Math.random() * 3);
+        let pe = Math.floor(Math.random() * 2);
+        let pp = 3 - (pg + pe);
+        if (pp < 0) pp = 0;
+
+        let pts = (pg * 3) + pe;
+
+        tabla.push({
+            equipo,
+            pj: 3,
+            pg,
+            pe,
+            pp,
+            pts
+        });
+    });
+
+    tabla.sort((a, b) => b.pts - a.pts);
+
+    tabla.forEach(e => {
+        tbody.innerHTML += `
+            <tr>
+                <td>${e.equipo}</td>
+                <td>${e.pj}</td>
+                <td>${e.pg}</td>
+                <td>${e.pe}</td>
+                <td>${e.pp}</td>
+                <td>${e.pts}</td>
+            </tr>
+        `;
+    });
+
+    // Mostrar ganador
+    ganadorTexto.innerHTML = "🏆 El ganador del grupo es: <strong>" + tabla[0].equipo + "</strong>";
+
+}
+
+</script>
+
+
+</body>
+</html>

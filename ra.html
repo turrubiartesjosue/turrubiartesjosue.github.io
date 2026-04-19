@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Realidad Aumentada - Mundial 2026</title>
+    <link rel="stylesheet" href="estilo.css">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        /* ── Estilos SOLO para el bloque AR ── */
+        .blippar-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+            padding: 24px 16px;
+        }
+
+        .blippar-frame-box {
+            position: relative;
+            width: 360px;
+            aspect-ratio: 9 / 16;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.45);
+            background: #000;
+            border: 2px solid rgba(255,255,255,0.12);
+        }
+
+        .blippar-frame-box iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+
+        .btn-fullscreen {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 24px;
+            border-radius: 50px;
+            border: 2px solid rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.08);
+            color: #fff;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            cursor: pointer;
+            backdrop-filter: blur(8px);
+            transition: background 0.2s, border-color 0.2s, transform 0.15s;
+        }
+
+        .btn-fullscreen:hover {
+            background: rgba(255,255,255,0.18);
+            border-color: rgba(255,255,255,0.6);
+            transform: translateY(-1px);
+        }
+
+        .btn-fullscreen svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        /* Pantalla completa nativa */
+        .blippar-frame-box:-webkit-full-screen { width: 100vw; height: 100vh; border-radius: 0; }
+        .blippar-frame-box:-moz-full-screen    { width: 100vw; height: 100vh; border-radius: 0; }
+        .blippar-frame-box:fullscreen          { width: 100vw; height: 100vh; border-radius: 0; }
+        .blippar-frame-box:fullscreen iframe   { width: 100%; height: 100%; }
+    </style>
+</head>
+<body class="ar-body">
+
+    <header>
+        <h1 class="titulo-secundario">Misión Mundial 2026</h1>
+        <p>Escanea la imagen para poder hacer bailar la mascota</p>
+    </header>
+
+    <nav class="menu">
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="Historia.html">Historia</a></li>
+            <li><a href="estadistica.html">Estadísticas</a></li>
+            <li><a href="trivias.html">Trivia</a></li>
+            <li><a href="ra.html">Realidad Aumentada</a></li>
+            <li><a href="videos.html">Videos y Fotos</a></li>
+        </ul>
+    </nav>
+
+    <div class="ar-container">
+
+        <!-- Fondo de video -->
+        <video autoplay muted loop class="fondo-video">
+            <source src="imagenes/estadio.mp4" type="video/mp4">
+        </video>
+
+        <!-- ── Bloque de Realidad Aumentada ── -->
+        <div class="blippar-wrapper">
+            <div class="blippar-frame-box" id="blippar-box">
+                <iframe
+                    id="blippar-iframe"
+                    src="https://ar.blippar.com/92fj1bux7el08vdt1ekgo09a93m28r2ofawtsjp2"
+                    allow="camera; gyroscope; accelerometer; magnetometer; xr-spatial-tracking; microphone"
+                    allowfullscreen
+                    loading="lazy"
+                ></iframe>
+            </div>
+
+            <button class="btn-fullscreen" onclick="abrirPantallaCompleta()">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 3h6v2H5v4H3V3zm12 0h6v6h-2V5h-4V3zM3 15h2v4h4v2H3v-6zm16 4h-4v2h6v-6h-2v4z"/>
+                </svg>
+                Pantalla completa
+            </button>
+        </div>
+        <!-- ── Fin bloque AR ── -->
+
+        <!-- Balón interactivo -->
+
+        <!-- HUD inferior -->
+        <div class="hud-bottom">
+            <button onclick="reiniciar()">Escanear</button>
+        </div>
+
+        <!-- Mensaje -->
+        <div id="mensaje" class="mensaje"></div>
+
+    </div>
+
+    <footer>
+        <p>© 2026 Aplicación Mundial</p>
+    </footer>
+
+    <script>
+        function reiniciar() {
+            document.getElementById("mensaje").innerHTML = "";
+        }
+
+        function abrirPantallaCompleta() {
+            const box = document.getElementById("blippar-box");
+            if (box.requestFullscreen)             box.requestFullscreen();
+            else if (box.webkitRequestFullscreen)  box.webkitRequestFullscreen();
+            else if (box.mozRequestFullScreen)     box.mozRequestFullScreen();
+        }
+    </script>
+
+</body>
+</html>
