@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trivias - Mundial 2026</title>
     <link rel="stylesheet" href="estilo.css">
-        <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -15,27 +15,22 @@
     <p>Demuestra cuánto sabes de la historia mundialista</p>
 </header>
 
-    <nav class="menu">
-        <ul>
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="Historia.html">Historia</a></li>
-            <li><a href="estadistica.html">Estadísticas</a></li>
-            <li><a href="trivias.html">Trivia</a></li>
-            <li><a href="ra.html">Realidad Aumentada</a></li>
-            <li><a href="videos.html">Videos y Fotos</a></li>
-        </ul>
-    </nav>
+<nav class="menu">
+    <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="Historia.html">Historia</a></li>
+        <li><a href="estadistica.html">Estadísticas</a></li>
+        <li><a href="trivias.html">Trivia</a></li>
+        <li><a href="ra.html">Realidad Aumentada</a></li>
+        <li><a href="videos.html">Videos y Fotos</a></li>
+    </ul>
+</nav>
 
 <section class="contenido">
 
     <div id="menu-trivias">
-        <h2>Selecciona una Trivia</h2>
-        <button onclick="iniciarTrivia('general')">Mundiales Históricos</button>
-        <button onclick="iniciarTrivia('america')">México, USA y Canadá</button>
-        <button onclick="iniciarTrivia('campeones')">Brasil, España e Inglaterra</button>
-        <button onclick="iniciarTrivia('goleadores')">Goleadores Históricos</button>
-<button onclick="iniciarTrivia('estadios')">Sedes y Estadios</button>
-<button onclick="iniciarTrivia('curiosidades')">Datos Curiosos</button>
+        <h2>Trivia Mundialista Definitiva</h2>
+        <button onclick="iniciarTrivia()">Iniciar Trivia</button>
     </div>
 
     <div id="trivia-container"></div>
@@ -54,9 +49,10 @@
 
 <script>
 
-const trivias = {
 
-general: [
+const bancoPreguntas = [
+
+/* GENERAL */
 { pregunta:"¿Qué país ha ganado más Mundiales?", opciones:["Italia","Brasil","Alemania","Argentina"], correcta:1 },
 { pregunta:"¿En qué año fue el primer Mundial?", opciones:["1930","1950","1942","1928"], correcta:0 },
 { pregunta:"¿Qué selección ganó el Mundial 2018?", opciones:["Brasil","Alemania","Francia","Argentina"], correcta:2 },
@@ -66,10 +62,9 @@ general: [
 { pregunta:"¿Qué país ganó el Mundial 2006?", opciones:["Italia","Francia","Brasil","España"], correcta:0 },
 { pregunta:"¿Quién fue campeón en 1998?", opciones:["Alemania","Brasil","Francia","Italia"], correcta:2 },
 { pregunta:"¿Qué selección ganó en 1986?", opciones:["Argentina","Brasil","Italia","Alemania"], correcta:0 },
-{ pregunta:"¿Qué país ganó en 2010?", opciones:["España","Holanda","Brasil","Francia"], correcta:0 }
-],
+{ pregunta:"¿Qué país ganó en 2010?", opciones:["España","Holanda","Brasil","Francia"], correcta:0 },
 
-america: [
+/* AMÉRICA */
 { pregunta:"¿Cuántas veces México ha sido anfitrión antes de 2026?", opciones:["1","2","3","0"], correcta:1 },
 { pregunta:"¿En qué año USA organizó el Mundial?", opciones:["1994","2006","1986","2014"], correcta:0 },
 { pregunta:"¿Qué estadio mexicano fue sede en 1970 y 1986?", opciones:["Azteca","Jalisco","BBVA","CU"], correcta:0 },
@@ -79,10 +74,9 @@ america: [
 { pregunta:"¿Qué ciudad de USA fue sede en 1994?", opciones:["Los Ángeles","Nueva York","Chicago","Todas"], correcta:3 },
 { pregunta:"¿Qué país de Norteamérica ha llegado a semifinales?", opciones:["México","USA","Canadá","Ninguno"], correcta:1 },
 { pregunta:"¿Qué selección eliminó a México en 2014?", opciones:["Holanda","Brasil","Alemania","Argentina"], correcta:0 },
-{ pregunta:"¿Qué país será anfitrión junto a México en 2026?", opciones:["USA y Canadá","Brasil y Argentina","España y Portugal","Francia y Alemania"], correcta:0 }
-],
+{ pregunta:"¿Qué país será anfitrión junto a México en 2026?", opciones:["USA y Canadá","Brasil y Argentina","España y Portugal","Francia y Alemania"], correcta:0 },
 
-campeones: [
+/* CAMPEONES */
 { pregunta:"¿Cuántos Mundiales ha ganado Brasil?", opciones:["4","5","6","3"], correcta:1 },
 { pregunta:"¿En qué año España fue campeona?", opciones:["2006","2014","2010","1998"], correcta:2 },
 { pregunta:"¿Cuántos Mundiales ha ganado Inglaterra?", opciones:["1","2","3","0"], correcta:0 },
@@ -92,10 +86,9 @@ campeones: [
 { pregunta:"¿Argentina tiene cuántos títulos?", opciones:["3","2","4","1"], correcta:0 },
 { pregunta:"¿Qué país ganó en 2002?", opciones:["Alemania","Brasil","Francia","Italia"], correcta:1 },
 { pregunta:"¿Qué país ganó en 1958?", opciones:["Brasil","Italia","Alemania","Uruguay"], correcta:0 },
-{ pregunta:"¿Qué país ganó en 1974?", opciones:["Alemania","Holanda","Brasil","Argentina"], correcta:0 }
-],
+{ pregunta:"¿Qué país ganó en 1974?", opciones:["Alemania","Holanda","Brasil","Argentina"], correcta:0 },
 
-goleadores: [
+/* GOLEADORES */
 { pregunta:"¿Quién es el máximo goleador histórico del Mundial?", opciones:["Pelé","Klose","Messi","Ronaldo"], correcta:1 },
 { pregunta:"¿Cuántos goles hizo Klose?", opciones:["14","16","18","15"], correcta:1 },
 { pregunta:"¿Qué jugador anotó 8 goles en 2002?", opciones:["Ronaldo","Ronaldinho","Kaka","Rivaldo"], correcta:0 },
@@ -105,10 +98,9 @@ goleadores: [
 { pregunta:"¿Mbappé anotó hat-trick en la final de?", opciones:["2022","2018","2014","2010"], correcta:0 },
 { pregunta:"¿Ronaldo Nazario es de qué país?", opciones:["Brasil","Portugal","España","Argentina"], correcta:0 },
 { pregunta:"¿Messi ganó el Balón de Oro en 2022?", opciones:["Sí","No"], correcta:0 },
-{ pregunta:"¿Quién anotó el gol de la 'Mano de Dios'?", opciones:["Pelé","Maradona","Messi","Zidane"], correcta:1 }
-],
+{ pregunta:"¿Quién anotó el gol de la 'Mano de Dios'?", opciones:["Pelé","Maradona","Messi","Zidane"], correcta:1 },
 
-estadios: [
+/* ESTADIOS */
 { pregunta:"¿Dónde se jugó la final 2010?", opciones:["Johannesburgo","Madrid","París","Roma"], correcta:0 },
 { pregunta:"¿En qué estadio se jugó la final 2014?", opciones:["Maracaná","Azteca","Wembley","Camp Nou"], correcta:0 },
 { pregunta:"¿El estadio Azteca está en?", opciones:["Guadalajara","CDMX","Monterrey","Puebla"], correcta:1 },
@@ -118,10 +110,9 @@ estadios: [
 { pregunta:"¿El Maracaná está en?", opciones:["Argentina","Brasil","Chile","Perú"], correcta:1 },
 { pregunta:"¿El Mundial 1990 fue en?", opciones:["Italia","Francia","España","Brasil"], correcta:0 },
 { pregunta:"¿El Mundial 2002 fue en?", opciones:["Corea/Japón","China","Brasil","Qatar"], correcta:0 },
-{ pregunta:"¿El Mundial 2026 tendrá cuántos equipos?", opciones:["32","48","40","36"], correcta:1 }
-],
+{ pregunta:"¿El Mundial 2026 tendrá cuántos equipos?", opciones:["32","48","40","36"], correcta:1 },
 
-curiosidades: [
+/* CURIOSIDADES */
 { pregunta:"¿Qué país ganó el Mundial 1950?", opciones:["Uruguay","Brasil","Italia","Alemania"], correcta:0 },
 { pregunta:"¿Cuál fue el primer campeón?", opciones:["Argentina","Uruguay","Brasil","Italia"], correcta:1 },
 { pregunta:"¿Qué selección nunca ha ganado?", opciones:["Holanda","Brasil","Italia","Alemania"], correcta:0 },
@@ -132,16 +123,20 @@ curiosidades: [
 { pregunta:"¿Sudáfrica organizó en?", opciones:["2010","2006","2014","2002"], correcta:0 },
 { pregunta:"¿Qatar organizó en?", opciones:["2022","2018","2014","2010"], correcta:0 },
 { pregunta:"¿Cuántos títulos tiene Francia?", opciones:["2","3","1","4"], correcta:0 }
-]
 
-};
+];
 
 let preguntasActuales = [];
 let indice = 0;
 let puntos = 0;
 
-function iniciarTrivia(tipo) {
-    preguntasActuales = trivias[tipo];
+function mezclarPreguntas(array) {
+    return array.sort(() => Math.random() - 0.5);
+}
+
+function iniciarTrivia() {
+    preguntasActuales = mezclarPreguntas([...bancoPreguntas]).slice(0, 10);
+
     indice = 0;
     puntos = 0;
 
@@ -164,13 +159,17 @@ function mostrarPregunta() {
     }
 
     let p = preguntasActuales[indice];
-    let html = "<h2>" + p.pregunta + "</h2>";
+
+    let html = `
+        <h2>Pregunta ${indice + 1} de ${preguntasActuales.length}</h2>
+        <p>${p.pregunta}</p>
+    `;
 
     p.opciones.forEach((opcion, i) => {
         html += `
             <div>
-                <input type="radio" name="respuesta" value="${i}">
-                <label>${opcion}</label>
+                <input type="radio" name="respuesta" value="${i}" id="op${i}">
+                <label for="op${i}">${opcion}</label>
             </div>
         `;
     });
@@ -179,13 +178,13 @@ function mostrarPregunta() {
 }
 
 function siguientePregunta() {
-
     let seleccion = document.querySelector('input[name="respuesta"]:checked');
 
     if (seleccion) {
         if (parseInt(seleccion.value) === preguntasActuales[indice].correcta) {
             puntos++;
         }
+
         indice++;
         mostrarPregunta();
     } else {
