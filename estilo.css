@@ -819,3 +819,69 @@ header {
         align-items: center;
     }
 }
+
+/* ========================= */
+/* MENÚ RETRÁCTIL CELULAR */
+/* ========================= */
+
+/* Botón oculto en PC */
+.menu-toggle {
+    display: none;
+}
+
+/* SOLO CELULARES */
+@media (max-width: 768px) {
+
+    /* BOTÓN */
+    .menu-toggle {
+        display: block;
+        width: 90%;
+        margin: 10px auto;
+        padding: 15px;
+
+        background: linear-gradient(135deg, var(--verde), var(--azul));
+        color: white;
+
+        border: none;
+        border-radius: 12px;
+
+        font-size: 18px;
+        font-weight: bold;
+
+        cursor: pointer;
+
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+
+        transition: 0.3s;
+    }
+
+    .menu-toggle:hover {
+        transform: scale(1.03);
+    }
+
+    /* MENÚ OCULTO */
+    .menu {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease;
+    }
+
+    /* MENÚ ABIERTO */
+    .menu.activo {
+        max-height: 500px;
+    }
+
+    /* LISTA */
+    .menu ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        padding: 10px 0;
+    }
+
+    /* LINKS */
+    .menu ul li a {
+        width: 90%;
+        display: block;
+    }
+}
